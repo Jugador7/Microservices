@@ -1,0 +1,12 @@
+Monolithic
+Microservices
+-  Break down larger applications into smaller pieces
+-  Are independently maintainable and scalable
+-  Provides cost benefits and team autonomy
+
+
+Serverless?
+-  Ability to run apps withiut managing architecture. 
+-  Require serverless architecture for the core code. 
+-  Apps deployed quickly and free up space app. 
+
