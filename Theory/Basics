@@ -10,3 +10,63 @@ Serverless?
 -  Require serverless architecture for the core code. 
 -  Apps deployed quickly and free up space app. 
 
+Modern Software Architecture:
+Software as a service
+Centrally hosted and accessed through the internet. 
+
+Twelve factor app methodology is suited for web apps
+- 3 phases (Code, Deploy and Operate)
+
+CODE FACTORS:
+1. CODE BASE: Tracked in a version control system (Git)
+    Maintain 1to1 relationship between codebase and app 
+5. BUILD RELEASE AND RUN:
+    Compile in build. 
+    Release configures deployment
+    Run Implements the app. (code shold not be changeable in run. )
+    Las tres fases deben estar separadas
+10. DEV/PROD: Parity
+    Minimize differences between development and prod environments
+    Quickly prommotes changes to prod. 
+2. Dependencies:
+    Un app es tan confiable como su dependencia menos confiable
+    Se deben declarar todas las depedencias. 
+
+
+DEPLOYMENT FACTORS:
+3. Config
+    Separate from code
+    Credenciales y locaciones del Backend deben estar siempre en un config
+    Debe estar en las variables de entorno
+4. Servicios de Backend
+    No se debe distinguir entre servicios locales y de terceros. 
+    Todos los servicios se deben acceder vía una URL para que puedan ser intercambiados sin cammbiar el código.
+6. Procesos:
+    Deben ser stateless y no deben commpartir nada
+    No deben compartir memoria ni archivos. 
+    Datos deben estar centralizados. 
+7. Port binding:
+    Export HTTP services by port binding
+    Declare web server library as a dependency
+    Become backend service for other apps. 
+
+
+Operate:
+8. Concurrencia:
+    Scale an app
+    Spin up stateless processes
+9. Disposability:
+    Minimal start time and graceful termination
+    Quickly deploy code or config changes
+    Easily scale apps. 
+11. Logs:
+    App performance visibility
+    No store but stream logs
+    Route logs to destination
+12. Admmin processes:
+    DB migration 
+    Run agains release using same codebase and config
+    Part of app code
+
+
+
