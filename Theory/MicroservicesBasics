@@ -1,0 +1,16 @@
+Createn an app composed off:
+1. Many loosely coupled
+2. Independently deployable 
+3. Smaller services
+
+Each services has its own stack
+Components commmmunicate with one and other via REST API, event streaming and message broker
+Functional segregation (bounded context)
+
+Benefits of microservices
+- No interdependency = Easy updates
+- Different stack = varied expertise
+- Smmaller components = scale independently
+
+Horizontal scaling (scaling out)
+Event driven scaling with mmmessage brokers
