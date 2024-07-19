@@ -1,0 +1,21 @@
+Monolith
+- All Func is ina single process
+- Managed in internal layer for Security, Reporting, Analytics, Interface, Data Access
+- Layers are interconnected
+Benefits: Simple and less-crosscutting
+Disadvantage: Barrier to adapt new tech, with growth and complexity increases
+
+SOA:
+- Design and built in a service provider and consumer approach 
+- Services are provided seamlessly and reusably
+Compromises: Interface, Contract and Implementation (Code) they are separete. 
+Pros: Reliabilty and supports parallel development
+Cons: Complex design. Expensive
+
+Microservices:
+-Loose, independent, reusable and specialized
+- Microservice data is not shared
+- Scalable and tech independent
+Pros: Ease of development, flexibility
+Cons: Security requirement is indipendent, debugging is a challenge. 
+
