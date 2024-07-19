@@ -1,0 +1,41 @@
+SPA - single page app
+BFF - Backend for frontend
+Strangler - 
+Service discovery
+
+SPA:
+- Loads one interface that never reloads
+- Updates dynamically using API REST calls to the backend that update portions of the screen
+- Simplifies the frontend experience 
+- Works well for one only experience not for both mobile and web
+
+BFF:
+- Superior support compared to generic backend
+- Inserts layer between user experience and resources. 
+- Enables customized user experience for different channels. 
+- Supports one-backend per user interface
+
+Strangler:
+- Refactors a monolythic app in stages
+- Split functional dommains and replace with mucroservices per domain. 
+- Enales two apps to exist side by side. 
+First transform:
+- Create a parallel new site
+Coexist:
+- Incrementally redirects from current location to new site for newly implemented functionality,. 
+Eliminate:
+- Remove old functionality
+
+
+Service discovery:
+- apps and services discover each other. 
+- Service instances change dynamically
+- Could be used by load balancers to perform health checks and rebalance traffic on service failures. 
+- 
+
+Other: Entity and aggregate (-ecommerce) 
+Adapter: Transale relationships between objects ie integration with APIs.
+
+
+
+
