@@ -1,0 +1,69 @@
+Deploying the microservices
+Go to the Code engine CLI terminal. If you don’t have one, click below to set it up.
+Click here to see how to set up one
+In the Code Engine CLI, clone the repository https://github.com/ibm-developer-skills-network/gentu-microservices_practiceProj.git by running the following command.
+1
+git clone https://github.com/ibm-developer-skills-network/gentu-microservices_practiceProj.git
+Copied!Executed!
+Change to the universities directory in the project that you just cloned.
+1
+cd gentu-microservices_practiceProj/universities
+Copied!Executed!
+List to see the directories inside it each of which have the microservices that we will deploy on Code Engine.
+1
+ls
+Copied!Executed!
+You will see two directories listed.
+
+listing
+websites
+The listing directory contains the microservice that will list all universities or a list of universities based on keyword search.
+
+The websites directory contains the microservice that will provide the list of websites given a college name. You will later update the application to return websites for all colleges that match a keyword search.
+
+Run the following command to deploy the listing as a microservice.
+1
+ibmcloud ce app create --name listing --image us.icr.io/${SN_ICR_NAMESPACE}/listing --registry-secret icr-secret --port 5000 --build-context-dir listing --build-source .
+Copied!Executed!
+This takes a while.
+
+
+
+Now run the following command to get the details about the app. This will also list URL that you can access the endpoints through. Copy the URL.
+1
+ibmcloud ce app get -n listing
+Copied!Executed!
+
+
+Now try to access the endpoint you copied previously by replacing it in the following command. This command will fetch all the colleges which have the name Trinity in it.
+1
+curl <your deplymenturl>/colleges/Trinity
+Copied!
+This will take a while as no instances are running.
+
+
+8. Now get the details of the deployment again.
+
+1
+ibmcloud ce app get --name listing -q
+Copied!Executed!
+You can see that the instances are listed now as you just accessed the endpoint. But this instance will be terminated again when there are no more requests. You can verify the same by running the same command after a gap of 5 mins.
+
+Run the following command to deploy the websites as a microservice.
+1
+ibmcloud ce app create --name websites --image us.icr.io/${SN_ICR_NAMESPACE}/websites --registry-secret icr-secret --port 5000 --build-context-dir websites --build-source .
+Copied!Executed!
+This takes a while and once it successfully deploys, you will get a URL that you can access the endpoints through. Copy the URL.
+
+Now try to access the endpoint you copied previously by replacing it in the following command. This command will fetch all the websites for the college Trinity College of Music.
+1
+curl <your deplymenturl>/websites/Trinity%20College%20of%20Music
+Copied!
+%20 is URL encoding for blank space.
+
+There is no keyword search for the websites. Only if the college name exactly matches the value that is passed, the websites are fetched. Try to access the endpoint you copied previously by replacing it in the following command. This command will fetch no websites.
+1
+curl <your deplymenturl>/websites/Trinity
+Copied!
+It will return nothing.
+
