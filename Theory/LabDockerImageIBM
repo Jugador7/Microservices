@@ -1,0 +1,58 @@
+Deploying the docker image
+Go to the Code engine CLI terminal. If you don’t have one, click below to set it up.
+Click here to see how to set up one
+On the menu in your lab environment, Click Cloud dropdown and choose Code Engine. The code engine set up panel comes up. Click Create Project.
+
+
+The code engine environment takes a while to prepare. You will see the progress status being indicated in the set up panel.
+
+
+Once the code engine set up is complete, you can see that it is active. Click on Code Engine CLI to begin the pre-configured CLI in the terminal below.
+
+
+You will observe that the pre-configured CLI statrup and the home directory is set to the current directory. As a part of the pre-configuration, the project has been set up and Kubeconfig is set up. The details that are shown on the terminal.
+
+
+You will now use the CLI to deploy the Hello World application.
+
+Run the following command to see the list of applications that exist.
+1
+ibmcloud ce app list
+Copied!Executed!
+You will clone the code from github, dockerize it and deploy the web application which serves one REST API endpoint at the root level and returns the string Hello World. Run the following command to clone the code.
+1
+git clone https://github.com/ibm-developer-skills-network/danum-pythonflaskserver
+Copied!Executed!
+Change to the cloned directory by running the following command.
+1
+cd danum-pythonflaskserver
+Copied!Executed!
+Now run docker build in the current directory and tag the image. Note that in the below command we are naming the app helloworld2 as we may have the earlier instance of helloworld still in the project space.
+1
+docker build . -t us.icr.io/${SN_ICR_NAMESPACE}/helloworld2
+Copied!Executed!
+Now push the image to the namespace so that you can run it.
+1
+docker push us.icr.io/${SN_ICR_NAMESPACE}/helloworld2
+Copied!Executed!
+Now that the image is all set to be deployed, run the following command. Please note that since we already built and pushed the image, we can create the application without mentioning the build source. You will see that the command creates the application and also internally sets up the required infrastructure. It takes a a few seconds and it finally gives a confirmation along with the URL.
+1
+ibmcloud ce application create --name helloworld2 --image us.icr.io/${SN_ICR_NAMESPACE}/helloworld2 --registry-secret icr-secret --port 5000
+Copied!Executed!
+
+
+Press ctrl(Windows)/cmd(Mac) and the link that is created. Alternatively copy the link and paste it in a browser page and press enter. The hello world application page renders as given below.
+
+
+
+Practice Exercise:
+Go to the file menu, open danum-pythonflaskserver/app.py and change the message from “Hello World” to “Hello yourname!”.
+
+Save the file, build docker again and update the application using ibmcloud ce application update.
+
+Click here for the solution
+1
+ibmcloud ce application update --name helloworld2 --image us.icr.io/${SN_ICR_NAMESPACE}/helloworld2 --registry-secret icr-secret --port 5000
+Copied!Executed!
+Open the URL that is generated and see if the application has got updated.
+Congratulations! You have completed this lab successfully and deployed your first application on Code Engine.
